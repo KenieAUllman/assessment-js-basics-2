@@ -31,7 +31,14 @@
 */
 
 //CODE HERE
-
+let pizza = {
+    name: 'Roma',
+    price: 14,
+    category: 'Thin Crust Pizza',
+    poplarity: 7,
+    rating: 4,
+    tags: ['pizza', 'italian', 'cheesy', 'vegtables', 'entree']
+}
 
 
 //////////////////PROBLEM 2////////////////////
@@ -43,6 +50,7 @@
 */
 
 //CODE HERE
+console.log(pizza.poplarity)
 
 
 /*
@@ -53,7 +61,7 @@
 */
 
 //CODE HERE
-
+console.log(pizza.tags[1])
 
 /*
     Third, destructure the price off of the
@@ -63,17 +71,20 @@
 */
 
 //CODE HERE
-
+const {price} = pizza
+console.log(pizza.price)
 
 /*
     Fourth, and last, destructure the category
-    property.
+    property. *There is not a 'Property' catagory-- so I desctrucured 'popularity'. Also, I wasn't sure if I was supposed to do anything after destructuring
+     as the instructions aren't really clear on that. 
 
     Print the value of your category variable. 
 */
 
 //CODE HERE
-
+const {poplarity} = pizza
+console.log(pizza.poplarity)
 
 //////////////////PROBLEM 3////////////////////
 /* 
@@ -88,7 +99,49 @@
 */
 
 //CODE HERE
+let foodArr = [
+    {
+        name: 'Meat Lover Calzone',
+        price: 12,
+        category: 'Calzone',
+        poplarity: 8,
+        rating: 3,
+        tags: ['calzone', 'italian', 'cheesy', 'pepperoni', 'entree']
+    },
+    {
+        name: 'Ciabatta',
+        price: 9,
+        category: 'Appetizers',
+        poplarity: 9,
+        rating: 5,
+        tags: ['bread', 'italian', 'cheesy', 'yeast']
+    },
+    {
+        name: 'Vegitarian Calzone',
+        price: 18,
+        category: 'Calzone',
+        poplarity: 4,
+        rating: 2,
+        tags: ['calzone', 'italian', 'cheesy', 'vegtables', 'entree']
+    },
+    {
+        name: 'Italian Salad',
+        price: 10,
+        category: 'Salad',
+        poplarity: 6,
+        rating: 5,
+        tags: ['salad', 'italian', 'fresh', 'vegtables', 'side']
+    },
+    {
+        name: 'Chicken Fingers',
+        price: 12,
+        category: 'Kids',
+        poplarity: 9,
+        rating: 2,
+        tags: ['kids', 'fries', 'american', 'entree']
+    },
 
+]
 
 
 //////////////////PROBLEM 4////////////////////
@@ -105,7 +158,15 @@
 
 //CODE HERE
 
-// const filteredFood = foodArr.filter(/* CALLBACK HERE */)
+let t = 'kids'
+const tagFilter = (element, index, array) => {
+        return element.tags.includes('kids')
+}
+const filteredFood = foodArr.filter(tagFilter) 
+
+console.log(foodArr.filter(tagFilter)[0])
+
+
 
 
 
@@ -159,3 +220,15 @@
 */
 
 //CODE HERE
+let filterByProperty = (property, num, type) => {
+    let filteredArr = foodArr.filter(element => {
+        if (type === 'above') {
+           return element[property] > num
+        } else {
+           return element[property] < num
+        }
+    })
+    return filteredArr
+}
+
+console.log(filterByProperty('price', 14, 'below'))
