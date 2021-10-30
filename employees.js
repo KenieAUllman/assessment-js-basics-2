@@ -20,6 +20,17 @@
 */
 
 //CODE HERE
+class Employee {
+    constructor(name, shifts) {
+        this.name = name;
+        this.shifts = shifts;
+    }
+
+    getSchedule = () => {
+        console.log(this.name + ' works on ' + this.shifts)
+    }
+
+}
 
 
 
@@ -34,6 +45,7 @@
 */
 
 //CODE HERE
+let empOne = new Employee('Amanda', 'Thursday Afternoon') 
 
 /*
     Call the `getSchedule` method on the
@@ -41,7 +53,7 @@
 */
 
 //CODE HERE
-
+empOne.getSchedule()
 
 /*
     Make a copy of the empOne object
@@ -56,7 +68,10 @@
 */
 
 //CODE HERE
+//let empTwo = {name: "Nick", ...empOne}
+let empTwo = new Employee('Nick', 'Tuesday Morning')
 
+empTwo.getSchedule()
 
 
 //////////////////PROBLEM 2////////////////////
@@ -83,8 +98,26 @@
 */
 
 //CODE HERE
+class Manager extends Employee {
+    constructor(name, shifts, employees) {
+        super(name, shifts)
+        this.employees = employees 
+    }
 
+    getEmployees = () => {
+        console.log(this.name + ' manages ' + this.employees.map(x => x.name))
+    }
 
+    addEmployee = (emp) => {
+        this.employees.push(emp)
+        //I don't know why I would add him as a string when the rest of my array are objects?
+    }
+}
+
+let manager = new Manager('Harry', 'Weekday Nights', [empOne , empTwo])
+manager.getEmployees()
+manager.addEmployee(new Employee('Caleb', 'Saturday Morning'))
+manager.getEmployees()
 
 /*
     Create a new instance of your class.
@@ -99,6 +132,10 @@
 
 //CODE HERE
 
+let managerTwo = new Manager('Winston', "weekday mornings", [])
+managerTwo.addEmployee(new Employee("Cece", "Monday Afternoon"))
+managerTwo.addEmployee(new Employee("Schmidt", "Friday Night"))
+managerTwo.getEmployees() 
 
 /*
     Call the `getEmployees` method on the
